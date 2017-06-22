@@ -1,0 +1,5 @@
+name = Pool Tracker
+description = Add a block that lets you track a pool game.
+core = 7.x
+package = Game Tools
+configure = admin/config/pool
