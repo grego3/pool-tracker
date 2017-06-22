@@ -1,0 +1,120 @@
+<?php
+/**
+ * Implements hook_install().
+ */
+function gamecontenttype_install() {
+  node_types_rebuild();
+  $types = node_type_get_types();
+  node_add_body_field($types['game']);
+  foreach(_gamecontenttype_fields() as $field) {
+    field_create_field($field);
+  }
+  
+  foreach(_gamecontenttype_instances() as $fieldinstance) {
+    $fieldinstance['entity_type'] = 'node';
+    $fieldinstance['bundle'] = 'game';
+    print_r($fieldinstance);
+    field_create_instance($fieldinstance);
+  }
+}
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function gamecontenttype_uninstall() {
+    $ournewtype = 'game';
+    $sql = 'SELECT nid FROM {node} n WHERE n.type = :type';
+    $result = db_query($sql, array(':type' => $ournewtype));
+    $nodeids = array();
+    foreach ($result as $row) {
+        $nodeids[] = $row->nid;
+    }
+    node_delete_multiple($nodeids);
+    delete_game_fields();
+    node_type_delete($ournewtype);
+    field_purge_batch(500);
+}
+
+function delete_game_fields() {
+    foreach (array_keys(_gamecontenttype_fields()) as $field) {
+        field_delete_field($field);
+    }
+    $instances = field_info_instances('node', 'game');
+    foreach ($instances as $instance_name => $fieldinstance) {
+        field_delete_instance($fieldinstance);
+    }
+}
+
+
+function _gamecontenttype_fields() {
+    $t = get_t();
+    return array(
+        'game_player_1' => array(
+            'field_name' => 'game_player_1',
+            'label' => $t('Player one'),
+            'type' => 'text'
+        ),
+        'game_player_2' => array(
+            'field_name' => 'game_player_2',
+            'label' => $t('Player two'),
+            'type' => 'text'
+        ),
+        'game_winner' => array(
+            'field_name' => 'game_winner',
+            'label' => $t('Winner of the game'),
+            'type' => 'text'
+        ),
+    );
+}
+
+function _gamecontenttype_instances() {
+    $t = get_t();
+    return array(
+        'game_player_1' => array(
+            'field_name' => 'game_player_1',
+            'type' => 'text',
+            'label' => $t('Player One'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            ),
+            'display' => array(
+                'example_node_list' => array(
+                    'label' => $t('Player One'),
+                    'type' => 'text'
+                )
+            )
+        ),
+        'game_player_2' => array(
+            'field_name' => 'game_player_2',
+            'type' => 'text',
+            'label' => $t('Player Two'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            ),
+            'display' => array(
+                'example_node_list' => array(
+                    'label' => $t('Player Two'),
+                    'type' => 'text'
+                )
+            )
+        ),
+        'game_winner' => array(
+            'field_name' => 'game_winner',
+            'type' => 'text',
+            'label' => $t('Winner of the game'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            ),
+            'display' => array(
+                'example_node_list' => array(
+                    'label' => $t('Winner of the game'),
+                    'type' => 'text'
+                )
+            )
+        )
+    );
+}
+
+
+

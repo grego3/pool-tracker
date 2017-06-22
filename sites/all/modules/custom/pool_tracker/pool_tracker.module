@@ -1,1 +1,82 @@
 <?php
+/**
+ * @file
+ * A block module that tracks pool games.
+ */
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path 
+ *   Which path of the site we're using to display help
+ * @param arg 
+ *   Array that holds the current path as returned from arg() function
+ */
+function pool_tracker_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#pool_tracker':
+      $output = '';
+      $output .= '<h3>' . t('Pool Tracker Help') . '</h3>';
+      $output .= '<p>' . t('Track your pool games.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>'; 
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Play a game.') . '</dt>';
+      $output .= '<dd>' . t('First create an account. Then select a player. Play your game. Track the winner. See the leaderboard!').'</dd>';
+      $output .= '<dt>' . t('xxx') . '</dt>';
+      $output .= '<dd>' . t('yyy.') . '</dd>'; 
+      $output .= '</dl>'; 
+      return $output; 
+      break;
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function pool_tracker_block_info() {
+  $blocks['pool_tracker'] = array(
+    'info' => t('Pool tracker'),
+    'status' => TRUE,
+    'region' => 'content',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+
+/**
+ * Custom content function. 
+ * 
+ * Get games played
+ * 
+ * @return 
+ *   A result set of games.
+ */
+function pool_tracker_contents(){
+  
+  $query = db_select('pooltracker', 'p')
+    ->fields('p', array('gid', 'u1id', 'u2id', 'u1win', 'created'))
+    ->orderBy('created', 'DESC') //Most recent first.
+    ->execute(); 
+  return $query;  
+}
+
+
+/**
+ * Implements hook_block_view().
+ * 
+ * Prepares the contents of the block.
+ */
+function pool_tracker_block_view($delta = '') {
+  switch ($delta) {
+    case 'pool_tracker':
+      $block['subject'] = t('Pool tracker');
+      if (user_access('access content')) {
+        $block['content'] = '<h1>'.t("Game Time!").'</h1>';  
+      }
+    return $block;
+  }
+}
+

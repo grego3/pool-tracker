@@ -1,0 +1,6 @@
+name = gamecontenttype
+description = The game content type
+package = aGame Tools
+core = 7.x
+files[] = gamecontenttype.module
+files[] = gamecontenttype.install

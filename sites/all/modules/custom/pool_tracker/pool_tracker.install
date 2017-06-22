@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the pool tracker.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function pool_tracker_schema() {
+    
+  $schema['pooltracker'] = array(
+     'description' => 'Add pooltracker Table',
+     'fields' => array(
+         'gid' => array(
+            'description' => 'The primary key for games.',
+            'type' => 'serial',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+         ),
+         'u1id' => array(
+            'description' => 'The {users}.uid that is player 1 in this game.',
+            'type' => 'int',
+            'not null' => TRUE,
+            'default' => 0,
+         ),
+         'u2id' => array(
+            'description' => 'The {users}.uid that is player 2 in this game.',
+            'type' => 'int',
+            'not null' => TRUE,
+            'default' => 0,
+         ),
+         'u1win' => array(
+            'description' => 'Boolean indicating whether the player 1 won the game.',
+            'type' => 'int',
+            'not null' => TRUE,
+            'default' => 1,
+         ),
+         'created' => array(
+            'description' => 'The Unix timestamp when the game was created.',
+            'type' => 'int',
+            'not null' => TRUE,
+            'default' => 0,
+          ),
+     ),
+     'primary key' => array('gid'),
+  );
+  
+  return $schema;
+}
+
+
+
+
+
+function pool_tracker_install() {
+
+  // Create the 'user_wins' field if it doesn't already exist.
+  if (!field_info_field('user_wins')) {
+    $field = array(
+      'field_name' => 'user_wins',
+      'type' => 'text',
+    );
+    field_create_field($field);
+
+    // Create the instance on the bundle.
+    $instance = array(
+      'field_name' => 'user_wins',
+      'entity_type' => 'user',
+      'label' => 'User Wins',
+      'bundle' => 'user',
+      'settings' => array(
+        // Here you inform either or not you want this field showing up on the registration form.
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'type' => 'textfield',
+      ),
+    );
+    field_create_instance($instance);
+  }   
+  
+}
