@@ -244,8 +244,22 @@
  *   );
  * @endcode
  */
-$databases = array();
 
+$databases = array (
+  'default' => 
+  array (
+    'default' => 
+    array (
+     'driver' => 'mysql',
+     'database' => 'pooltracker',
+     'username' => 'dlaufer1',
+      'password' => '',
+      'host' => '0.0.0.0',
+      'prefix' => '',
+      ),
+    ),
+);
+ 
 /**
  * Access control for update.php script.
  *
