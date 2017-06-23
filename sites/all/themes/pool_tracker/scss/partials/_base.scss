@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-image: url("/sites/all/themes/pool_tracker/images/1280px-Billiard_hall.JPG");
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background:none;
+    
+    header#navbar.container {
+      margin-top: 0px;
+      background:none;
+      border:none;
+      
+      a {
+        @include vendorize(transition, all 0.15s ease);
+        color: #89E894;
+        
+        &:hover {
+          color: white;
+        }
+        &.active-trail {
+          background: none;
+          border-bottom: 4px solid #89E894;
+        }
+      }
+    
+    }
+    
+    .main-container {
+      height: 80%;
+      width: 80%;
+      left: 10%;
+      right: 10%;
+      bottom: 10%;
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      
+      .breadcrumb {
+        background:none;
+        border-radius: 0;
+      }
+      
+      #user-register-form {
+        
+        .form-item.form-type-radios {
+          display:none;
+        }
+        .form-item.form-type-checkbox {
+          display:none;
+        }
+        
+      }
+      
+      #header {
+        display:inline-block;
+      }
+      
+      #navigation {
+        display:inline-block;
+      }
+      
+      #main {
+        #page-title {
+          display:none;
+        }
+        .tabs {
+          display:none;
+        }
+      } 
+
+    }
+    
+    
+  }
+}

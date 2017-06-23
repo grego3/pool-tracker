@@ -49,25 +49,6 @@ function pool_tracker_block_info() {
 }
 
 
-
-/**
- * Custom content function. 
- * 
- * Get games played
- * 
- * @return 
- *   A result set of games.
- */
-function pool_tracker_contents(){
-  
-  $query = db_select('pooltracker', 'p')
-    ->fields('p', array('gid', 'u1id', 'u2id', 'u1win', 'created'))
-    ->orderBy('created', 'DESC') //Most recent first.
-    ->execute(); 
-  return $query;  
-}
-
-
 /**
  * Implements hook_block_view().
  * 
@@ -76,25 +57,39 @@ function pool_tracker_contents(){
 function pool_tracker_block_view($delta = '') {
   switch ($delta) {
     case 'pool_tracker':
-      $block['subject'] = t('Pool tracker');
+      $block['subject'] = t('');
       if (user_access('access content')) {
-        $block['content'] = '<h1>'.t("Game Time!").'</h1>';  
+        $block['content'] = _pool_tracker_block_content();  
       }
     return $block;
   }
 }
 
+function _pool_tracker_block_content(){
+  global $user;
+  $output = '';
+  
+  // Show User Log-in
+  if(!user_is_logged_in()){ 
+    $output .= '<h2>Sign-in</h2>';
+    $elements = drupal_get_form("user_login"); 
+    $form = drupal_render($elements); 
+    $output .= $form;
+    $output .= '<a href="/user/register"><h3>Create New Player</h3></a>';  
+  } else {
+    $output .= "<h2>You're logged in</h2>";
+  }
+  
+  return $output;
+}
+
 
 function pool_tracker_node_insert($node) {
-  dpm("here");
   if($node->type == 'game'){
-    dpm("just made a game");
     $winner = $node->game_winner['und'][0]['uid'];
     $user_fields = user_load($winner); 
-    dpm($user_fields);
     $current_wins = $user_fields->user_wins;
     $user_fields->user_wins = (string)((int)$current_wins + 1);
-    user_save($user_fields);
     dpm($user_fields);
   }
 }
@@ -135,7 +130,7 @@ function pool_tracker_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Nid */
