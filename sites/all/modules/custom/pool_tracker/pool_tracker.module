@@ -87,10 +87,15 @@ function _pool_tracker_block_content(){
 function pool_tracker_node_insert($node) {
   if($node->type == 'game'){
     $winner = $node->game_winner['und'][0]['uid'];
-    $user_fields = user_load($winner); 
-    $current_wins = $user_fields->user_wins;
-    $user_fields->user_wins = (string)((int)$current_wins + 1);
-    dpm($user_fields);
+    $existing = user_load($winner);
+    $edit = (array) $existing; 
+    if(!isset($edit['game_wins']['und'][0]['value'])) {
+      $edit['game_wins']['und'][0]['value'] = 1;
+    } else {
+      $edit['game_wins']['und'][0]['value'] += 1;
+    }
+    user_save($existing, $edit);
+    
   }
 }
 

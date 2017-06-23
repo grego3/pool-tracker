@@ -83,3 +83,14 @@ html {
     
   }
 }
+
+
+.view-leaderboard {
+  .views-row {
+    .views-field-game-wins {
+      .field-content {
+        display:inline-block;
+      }
+    }
+  }
+}

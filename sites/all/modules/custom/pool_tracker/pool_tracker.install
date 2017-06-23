@@ -92,4 +92,29 @@ function pool_tracker_install() {
     field_create_instance($instance);
   }   
   
+  // Create the 'user_wins' field if it doesn't already exist.
+  if (!field_info_field('game_wins')) {
+    $field = array(
+      'field_name' => 'game_wins',
+      'type' => 'number_integer',
+    );
+    field_create_field($field);
+
+    // Create the instance on the bundle.
+    $instance = array(
+      'field_name' => 'game_wins',
+      'entity_type' => 'user',
+      'label' => 'Game Wins',
+      'bundle' => 'user',
+      'default_value' => '0',
+      'settings' => array(
+        // Here you inform either or not you want this field showing up on the registration form.
+        'user_register_form' => 0,
+      ),
+    );
+    field_create_instance($instance);
+  }   
+  
+     
+  
 }

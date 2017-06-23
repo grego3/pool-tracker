@@ -161,7 +161,7 @@
       <?php endif; ?>
       <?php print render($page['content']); ?>
       
-      <?php //print $messages; ?>
+      <?php print $messages; ?>
     </section>
 
     <?php if (!empty($page['sidebar_second'])): ?>
