@@ -21,11 +21,19 @@ TECHNOLOGY USED
 CMS: Drupal 7.x
 
 Base Theme: Bootstrap
+Sub-theme: Pool-tracker
 
 Custom Module List:
  * gamecontenttype
+    - Creates the Game content type (node entity type)
  * Pool Tracker
- 
+    - Adds field "game_wins" to user profile
+    - Increments winner's "game_wins" on user profile when a Game is created and saves it back to db
+    - Creates the Games view
+    - Creates the pool_tracker block in which loads the user login form
+    - Include a help page
+    - Creates a pooltracker table in the db (which I ended up actually not even using  :)
+    
 Contrib Module List: 
  * Administration Menu & Administration menu Toolbar style
  * Chaos Tools & Page Manager
