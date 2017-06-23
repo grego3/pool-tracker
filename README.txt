@@ -47,7 +47,7 @@ OTHER:
 Potential Next Steps
 -------------------------------
  * Programmatically limit the "Winner" select box when playing a game to the chosen players.
- * Use views pager to display all games
+ * Use views pager to display all games, not just recent games
  * Create a "My Games" view page
  * Also record losses and compare best records, not just most wins
  * Improve design and user experience
