@@ -6,3 +6,6 @@ files[] = pool_tracker.install
 files[] = pool_tracker.module
 scripts[] = js/pool_tracker.js
 stylesheets[all][] = css/pool_tracker.css
+
+dependencies[] = agame_tools:gamecontenttype
+dependencies[] = views:views

@@ -53,7 +53,7 @@ function pool_tracker_schema() {
 
 
 
-
+// Add 'user_wins' field
 function pool_tracker_install() {
 
   // Create the 'user_wins' field if it doesn't already exist.
@@ -70,6 +70,17 @@ function pool_tracker_install() {
       'entity_type' => 'user',
       'label' => 'User Wins',
       'bundle' => 'user',
+      'default_value' => '0',
+      'display' => array(
+        'default' => array( // view mode
+          'label' => 'hidden',
+          'type' => 'text_default'
+        ),
+        'teaser' => array( // view mode
+          'label' => 'hidden',
+          'type' => 'hidden'
+        )
+      ),
       'settings' => array(
         // Here you inform either or not you want this field showing up on the registration form.
         'user_register_form' => 0,

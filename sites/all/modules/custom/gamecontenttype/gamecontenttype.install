@@ -53,66 +53,100 @@ function _gamecontenttype_fields() {
         'game_player_1' => array(
             'field_name' => 'game_player_1',
             'label' => $t('Player one'),
-            'type' => 'text'
+            'cardinality' => 1,
+            'type' => 'user_reference',
+            'entity_types' => array('node'),
+            'settings' => array(
+                'referenceable_status' => array(
+                    0 => 0,
+                    1 => '1',
+                ),  
+            ) 
         ),
         'game_player_2' => array(
             'field_name' => 'game_player_2',
             'label' => $t('Player two'),
-            'type' => 'text'
+            'cardinality' => 1,
+            'type' => 'user_reference',
+            'entity_types' => array('node'),
+            'settings' => array(
+                'referenceable_status' => array(
+                    0 => 0,
+                    1 => '1',
+                ),  
+            ) 
         ),
         'game_winner' => array(
             'field_name' => 'game_winner',
-            'label' => $t('Winner of the game'),
-            'type' => 'text'
+            'label' => $t('Who is the winner?'),
+            'cardinality' => 1,
+            'type' => 'user_reference',
+            'entity_types' => array('node'),
+            'settings' => array(
+                'referenceable_status' => array(
+                    0 => 0,
+                    1 => '1',
+                ),  
+            ) 
         ),
     );
 }
+
 
 function _gamecontenttype_instances() {
     $t = get_t();
     return array(
         'game_player_1' => array(
             'field_name' => 'game_player_1',
-            'type' => 'text',
+            'entity_type' => array('node'),
+            'bundle' => 'game',
             'label' => $t('Player One'),
+            'required' => TRUE,
             'widget' => array(
-                'type' => 'text_textfield'
-            ),
-            'display' => array(
-                'example_node_list' => array(
-                    'label' => $t('Player One'),
-                    'type' => 'text'
-                )
-            )
+                'active' => 1,
+                'module' => 'options',
+                'settings' => array(
+                        'apply_chosen' => '',
+                ),
+                'type' => 'options_select',
+                'weight' => '40',
+                ),
+           'display' => array(),
         ),
         'game_player_2' => array(
             'field_name' => 'game_player_2',
-            'type' => 'text',
+            'entity_type' => array('node'),
+            'bundle' => 'game',
             'label' => $t('Player Two'),
+            'required' => TRUE,
             'widget' => array(
-                'type' => 'text_textfield'
+                'active' => 1,
+                'module' => 'options',
+                'settings' => array(
+                        'apply_chosen' => '',
+                ),
+                'type' => 'options_select',
+                'weight' => '40',
             ),
-            'display' => array(
-                'example_node_list' => array(
-                    'label' => $t('Player Two'),
-                    'type' => 'text'
-                )
-            )
+           'display' => array(),
         ),
         'game_winner' => array(
             'field_name' => 'game_winner',
-            'type' => 'text',
-            'label' => $t('Winner of the game'),
+            'entity_type' => array('node'),
+            'bundle' => 'game',
+            'label' => $t('Game Winner'),
+            'required' => TRUE,
             'widget' => array(
-                'type' => 'text_textfield'
+                'active' => 1,
+                'module' => 'options',
+                'settings' => array(
+                        'apply_chosen' => '',
+                ),
+                'type' => 'options_select',
+                'weight' => '41',
             ),
-            'display' => array(
-                'example_node_list' => array(
-                    'label' => $t('Winner of the game'),
-                    'type' => 'text'
-                )
-            )
-        )
+           'display' => array(),
+        ),
     );
 }
 

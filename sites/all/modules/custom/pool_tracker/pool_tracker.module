@@ -41,9 +41,13 @@ function pool_tracker_block_info() {
     'status' => TRUE,
     'region' => 'content',
     'cache' => DRUPAL_NO_CACHE,
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'pool-tracker',
+    'class' => 'your-custom-class',
   );
   return $blocks;
 }
+
 
 
 /**
@@ -80,3 +84,104 @@ function pool_tracker_block_view($delta = '') {
   }
 }
 
+
+function pool_tracker_node_insert($node) {
+  dpm("here");
+  if($node->type == 'game'){
+    dpm("just made a game");
+    $winner = $node->game_winner['und'][0]['uid'];
+    $user_fields = user_load($winner); 
+    dpm($user_fields);
+    $current_wins = $user_fields->user_wins;
+    $user_fields->user_wins = (string)((int)$current_wins + 1);
+    user_save($user_fields);
+    dpm($user_fields);
+  }
+}
+
+
+/**
+ * Implements hook_views_api().
+ */
+function pool_tracker_views_api() {
+  return array(
+    'api' => 3.0,
+    'path' => drupal_get_path('module', 'pool_tracker'),
+  );
+}
+
+// Views export creates code that you have to paste in this function.
+/**
+ * Implementation of hook_views_default_views().
+ */
+function pool_tracker_views_default_views() {
+
+  $view = new view();
+  $view->name = 'games';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Games';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+  
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Games';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = 'Num';
+  /* Field: Content: Player One */
+  $handler->display->display_options['fields']['game_player_1']['id'] = 'game_player_1';
+  $handler->display->display_options['fields']['game_player_1']['table'] = 'field_data_game_player_1';
+  $handler->display->display_options['fields']['game_player_1']['field'] = 'game_player_1';
+  /* Field: Content: Player Two */
+  $handler->display->display_options['fields']['game_player_2']['id'] = 'game_player_2';
+  $handler->display->display_options['fields']['game_player_2']['table'] = 'field_data_game_player_2';
+  $handler->display->display_options['fields']['game_player_2']['field'] = 'game_player_2';
+  /* Field: Content: Game Winner */
+  $handler->display->display_options['fields']['game_winner']['id'] = 'game_winner';
+  $handler->display->display_options['fields']['game_winner']['table'] = 'field_data_game_winner';
+  $handler->display->display_options['fields']['game_winner']['field'] = 'game_winner';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'game' => 'game',
+  );
+  
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'games';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Games';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  
+  $views[$view->name] = $view;
+  return $views;
+}
