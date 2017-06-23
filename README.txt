@@ -11,7 +11,7 @@ CONTENTS OF THIS FILE
  * Potential Next Steps
  * Issues 
 
-ABOUT DRUPAL
+ABOUT Pool Tracker
 -----------------------
 Pool Tracker is my submission for the Pool App Exercise. Because of the Drupaly nature of the position, I felt the most interesting technology to use to develop a pool tracking app would be a custom Drupal module. So, while the site may be standard, it was developed almost entirely in two custom modules and styled using a custom subtheme. The directories with customized code are /sites/all/modules/custom/gamecontenttype/, /sites/all/modules/custom/pool_tracker/ and /sites/all/themes/pool_tracker/.
 
