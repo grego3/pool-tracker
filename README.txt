@@ -1,7 +1,7 @@
 Title: Pool Tracker
 Author: Daniel Laufer
 Live Site: http://pool-tracker-dlaufer1.c9users.io/
-(Please Note: the first time you visit the live site, the web host may bring up a splash screen warning that this is a development environment and just click "Preview" to view the site.)
+(Please Note: the first time you visit the live site, the web host may bring up a splash screen warning that this is a cloud development environment. Just click "Preview" to view the site.)
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -13,7 +13,7 @@ CONTENTS OF THIS FILE
 
 ABOUT Pool Tracker
 -----------------------
-Pool Tracker is my submission for the Pool App Exercise. Because of the Drupaly nature of the position, I felt the most interesting technology to use to develop a pool tracking app would be a custom Drupal module. So, while the site may be standard, it was developed almost entirely in two custom modules and styled using a custom subtheme. The directories with customized code are /sites/all/modules/custom/gamecontenttype/, /sites/all/modules/custom/pool_tracker/ and /sites/all/themes/pool_tracker/.
+Pool Tracker is my submission for the Pool App Exercise. You can create players, created games between any two existing players, determine the winner, and view leaderboard and games played. I felt the most interesting and relevant challenge would be to develop the pool tracking app in a custom Drupal module. So, while the site may appear standard, the functionality was developed almost entirely in code in two custom modules and styled using a custom subtheme. The directories with customized code are /sites/all/modules/custom/gamecontenttype/, /sites/all/modules/custom/pool_tracker/ and /sites/all/themes/pool_tracker/.
 
 TECHNOLOGY USED
 --------------------------
