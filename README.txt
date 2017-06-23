@@ -39,9 +39,9 @@ Contrib Module List:
  * Views & Views UI 
  
 OTHER:
- * CSS Preprocessor: SASS compiles with Compass
- * Version Control: Got
- * IDE: Cloud9
+ * CSS Preprocessor: SASS compiled with Compass
+ * Version Control: Git
+ * IDE: Cloud9 development environment
  * Backend: LAMP Stack
 
 Potential Next Steps
@@ -54,5 +54,6 @@ Potential Next Steps
 
 Issues
 -----------------
- * [UNRESOLVED] "Winner' select box needs to display only chosen players
+ * [UNRESOLVED] "Winner" select box needs to display only chosen players
+ * [UNRESOLVED] Display '0' instead of nothing in Leaderboard when no games won
  * [RESOLVED] Leaderboad view not displaying 'game-wins' field
