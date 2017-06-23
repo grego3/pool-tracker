@@ -20,6 +20,8 @@ TECHNOLOGY USED
 
 CMS: Drupal 7.x
 
+Base Theme: Bootstrap
+
 Custom Module List:
  * gamecontenttype
  * Pool Tracker
@@ -38,6 +40,9 @@ Contrib Module List:
  
 OTHER:
  * CSS Preprocessor: SASS compiles with Compass
+ * Version Control: Got
+ * IDE: Cloud9
+ * Backend: LAMP Stack
 
 Potential Next Steps
 -------------------------------
