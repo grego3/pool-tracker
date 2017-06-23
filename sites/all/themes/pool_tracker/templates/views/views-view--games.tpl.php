@@ -33,6 +33,7 @@
     <?php print $title; ?>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
+  <h1>Recent Games</h1>
   <?php if ($header): ?>
     <div class="view-header">
       <?php print $header; ?>

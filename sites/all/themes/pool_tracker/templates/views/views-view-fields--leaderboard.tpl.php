@@ -26,7 +26,7 @@
 ?>
 <div class="row">
 <?php foreach ($fields as $id => $field): ?>
-  <div class="col-xs-3">
+  <div class="col-xs-4 col-sm-2">
     <?php print $field->wrapper_prefix; ?>
       <?php print $field->label_html; ?>
       <?php print $field->content; ?>
