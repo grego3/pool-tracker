@@ -24,7 +24,7 @@
  * @ingroup views_templates
  */
 ?>
-<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 game-stat">
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 game-stat">
 <?php foreach ($fields as $id => $field): ?>
   
     <?php print $field->wrapper_prefix; ?>
