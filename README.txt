@@ -35,6 +35,9 @@ Contrib Module List:
  * Token
  * jQuery Update
  * Views & Views UI 
+ 
+OTHER:
+ * CSS Preprocessor: SASS compiles with Compass
 
 Potential Next Steps
 -------------------------------
