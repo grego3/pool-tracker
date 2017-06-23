@@ -38,8 +38,12 @@ Contrib Module List:
 
 Potential Next Steps
 -------------------------------
-
+ * Programmatically limit the "Winner" select box when playing a game to the chosen players.
+ * Create a "My Games" view page
+ * Improve design and user experience
 
 
 Issues
 -----------------
+ * [UNRESOLVED] Leaderboad view not displaying 'user-wins' field
+ * [UNRESOLVED] "Winner' select box needs to display only chosen players
