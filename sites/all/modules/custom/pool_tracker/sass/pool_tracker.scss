@@ -6,8 +6,17 @@
 
 .view-games {
   .views-row {
+    &.views-row-5, &.views-row-6 {
+      display:none;
+    }
     .game-stat {
       padding: 10px;
     }
   }
+}
+
+@media only screen and (min-width: 768px) {
+    .view-games .views-row.views-row-5, .view-games .views-row.views-row-6 {
+      display:block;
+    }
 }

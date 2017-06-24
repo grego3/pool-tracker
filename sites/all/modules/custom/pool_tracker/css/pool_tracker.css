@@ -1,4 +1,15 @@
 /* line 9, ../sass/pool_tracker.scss */
+.view-games .views-row.views-row-5, .view-games .views-row.views-row-6 {
+  display: none;
+}
+/* line 12, ../sass/pool_tracker.scss */
 .view-games .views-row .game-stat {
   padding: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 19, ../sass/pool_tracker.scss */
+  .view-games .views-row.views-row-5, .view-games .views-row.views-row-6 {
+    display: block;
+  }
 }
