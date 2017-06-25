@@ -13,7 +13,7 @@ CONTENTS OF THIS FILE
 
 ABOUT Pool Tracker
 -----------------------
-Pool Tracker is my submission for the Pool App Exercise. You can create players, created games between any two existing players, determine the winner, and view leaderboard and games played. I felt the most interesting and relevant challenge would be to develop the pool tracking app in a custom Drupal module. So, while the site may appear standard, the functionality was developed almost entirely in code in two custom modules and styled using a custom subtheme. The directories with customized code are /sites/all/modules/custom/gamecontenttype/, /sites/all/modules/custom/pool_tracker/ and /sites/all/themes/pool_tracker/.
+Pool Tracker is my submission for the Pool App Exercise. You can create players, created games between any two existing players, determine the winner, and view leaderboard or games played. The most relevant challenge for me would be to develop the pool tracking app in a custom Drupal module. So this site was created mostly in two custom modules and styled using a custom bootstrap subtheme. The directories with customized code are /sites/all/modules/custom/gamecontenttype/, /sites/all/modules/custom/pool_tracker/ and /sites/all/themes/pool_tracker/.
 
 TECHNOLOGY USED
 --------------------------
@@ -30,8 +30,9 @@ Custom Module List:
     - Adds field "game_wins" to user profile
     - Increments winner's "game_wins" on user profile when a Game is created and saves it back to db
     - Creates the Games view
+    - Limit the "pick winner" options with jquery
     - Creates the pool_tracker block in which loads the user login form
-    - Include a help page
+    - Include a help page    
     - Creates a pooltracker table in the db (which I ended up actually not even using  :)
     
 Contrib Module List: 
@@ -51,8 +52,8 @@ Contrib Module List:
 OTHER:
  * CSS Preprocessor: SASS compiled with Compass
  * Version Control: Git
- * IDE: Cloud9 development environment
- * Backend: LAMP Stack
+ * IDE: Cloud9 online LAMP development environment
+ * Host: Pantheon
 
 Potential Next Steps
 -------------------------------  
