@@ -4,6 +4,13 @@
  * A block module that tracks pool games.
  */
 
+
+function pool_tracker_overlay_child_initialize() {
+  drupal_add_js(drupal_get_path('module', 'pool_tracker') . '/js/pool_tracker-overlay.js');
+}
+
+
+
 /**
  * Implements hook_help().
  *
