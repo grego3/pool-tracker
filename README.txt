@@ -13,7 +13,7 @@ CONTENTS OF THIS FILE
 
 ABOUT Pool Tracker
 -----------------------
-Pool Tracker is my submission for the Pool App Exercise. You can create players, created games between any two existing players, determine the winner, and view leaderboard or games played. The most relevant challenge for me would be to develop the pool tracking app in a custom Drupal module. So this site was created mostly in two custom modules and styled using a custom bootstrap subtheme. The directories with customized code are /sites/all/modules/custom/gamecontenttype/, /sites/all/modules/custom/pool_tracker/ and /sites/all/themes/pool_tracker/.
+Pool Tracker is my submission for the Pool App Exercise. You can create players, created games between any two existing players, determine the winner, and view leaderboard or games played. This site was created mostly in two custom modules and styled using a custom bootstrap subtheme. The directories with customized code are /sites/all/modules/custom/gamecontenttype/, /sites/all/modules/custom/pool_tracker/ and /sites/all/themes/pool_tracker/.
 
 TECHNOLOGY USED
 --------------------------
