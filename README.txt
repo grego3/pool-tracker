@@ -1,7 +1,7 @@
 Title: Pool Tracker
 Author: Daniel Laufer
-Live Site: http://pool-tracker-dlaufer1.c9users.io/
-(Please Note: the first time you visit the live site, the web host may bring up a splash screen warning that this is a cloud development environment. Just click "Preview" to view the site.)
+Live Site: http://test-pool-tracker.pantheonsite.io/
+
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -35,13 +35,15 @@ Custom Module List:
     - Creates a pooltracker table in the db (which I ended up actually not even using  :)
     
 Contrib Module List: 
- * Administration Menu & Administration menu Toolbar style
+ * Administration Menu
  * Chaos Tools & Page Manager
  * Devel
- * References & Node Reference & User Reference
- * Entity API and Entity tokens
+ * References
+ * Entity API
  * Login Destination
  * Pathauto
+ * Entity Reference
+ * Hierarchical Select
  * Token
  * jQuery Update
  * Views & Views UI 
@@ -53,15 +55,13 @@ OTHER:
  * Backend: LAMP Stack
 
 Potential Next Steps
--------------------------------
- * Programmatically limit the "Winner" select box when playing a game to the chosen players.
- * Use views pager to display all games, not just recent games
+-------------------------------  
  * Create a "My Games" view page
  * Also record losses and compare best records, not just most wins
  * Improve design and user experience
 
 Issues
 -----------------
- * [UNRESOLVED] "Winner" select box needs to display only chosen players
  * [UNRESOLVED] Display '0' instead of nothing in Leaderboard when no games won
+ * [RESOLVED] "Winner" select box needs to display only chosen players
  * [RESOLVED] Leaderboad view not displaying 'game-wins' field
